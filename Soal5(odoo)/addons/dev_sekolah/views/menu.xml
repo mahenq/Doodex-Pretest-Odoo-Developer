@@ -1,0 +1,23 @@
+<odoo>
+    <menuitem id="menu_sekolah_root"
+        name="Sekolah"
+        sequence="1"
+        web_icon="dev_sekolah,static/description/icon.png"/>
+
+    <menuitem id="menu_sekolah"
+        name="Sekolah"
+        parent="menu_sekolah_root"
+        action="action_sekolah"/>
+
+    <menuitem id="menu_kelas"
+        name="Kelas"
+        parent="menu_sekolah_root"
+        action="action_kelas"
+        sequence="2"/>
+
+    <menuitem id="menu_guru"
+        name="Guru"
+        parent="menu_sekolah_root"
+        action="action_guru_list"
+        sequence="3"/>
+</odoo>

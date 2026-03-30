@@ -1,0 +1,46 @@
+<odoo>
+    <record id="view_partner_form_guru_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.guru.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/group" position="inside">
+                <group string="Data Guru">
+                    <field name="is_guru"/>
+                    <field name="bidang_studi" invisible="not is_guru"/>
+                
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_partner_tree_guru_inherit" model="ir.ui.view">
+        <field name="name">res.partner.tree.guru.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree" position="inside">
+                <field name="bidang_studi"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="action_guru_list" model="ir.actions.act_window">
+        <field name="name">Guru</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+
+        <!-- INI YANG PENTING -->
+        <field name="views" eval="[
+            (ref('view_partner_tree_guru_inherit'), 'tree'),
+            (ref('view_partner_form_guru_inherit'), 'form')
+        ]"/>
+
+        <field name="domain">[('is_guru','=',True)]</field>
+        <field name="context">{'default_is_guru': True}</field>
+    </record>
+</odoo>

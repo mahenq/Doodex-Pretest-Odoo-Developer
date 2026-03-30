@@ -1,0 +1,33 @@
+<odoo>
+    <!-- Form View Kelas -->
+    <record id="view_kelas_form" model="ir.ui.view">
+        <field name="name">dev.sekolah.kelas.form</field>
+        <field name="model">dev.sekolah.kelas</field>
+        <field name="arch" type="xml">
+            <form string="Kelas">
+                <header>
+                    <button name="%(dev_sekolah.action_guru_list)d"
+                            type="action"
+                            string="Lihat Semua Guru"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sekolah_id"/>
+                        <field name="wali_kelas_id"/>
+                    </group>
+
+                    <group>
+                        <field name="kelas_summary" invisible="1"/>
+                        <field name="total_kelas_sekolah" invisible="1"/>
+                    </group>
+
+                    <group string="Summary">
+                        <field name="kelas_summary" widget="kelas_summary_owl" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

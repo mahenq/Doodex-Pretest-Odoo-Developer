@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Action untuk Tree View semua Guru -->
+    <record id="action_guru_list" model="ir.actions.act_window">
+        <field name="name">Daftar Guru</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_guru', '=', True)]</field>
+        <field name="context">{'default_is_guru': True}</field>
+    </record>
+
+    <record id="inherit_view_sekolah_form_guru_button" model="ir.ui.view">
+        <field name="name">dev.sekolah.form.inherit.guru.button</field>
+        <field name="model">dev.sekolah</field>
+        <field name="inherit_id" ref="dev_sekolah.view_sekolah_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button
+                        type="action"
+                        name="dev_sekolah.action_guru_list"
+                        class="oe_stat_button"
+                        icon="fa-graduation-cap">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Guru</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

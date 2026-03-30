@@ -1,0 +1,16 @@
+
+<templates xml:space="preserve">
+   <t t-name="dev_sekolah.KelasSummaryOWL">
+    <div class="alert alert-info">
+        <div>
+            <strong>Nama Kelas:</strong>
+            <t t-esc="props.record.data.name"/>
+        </div>
+        <div>
+            <strong>Total Kelas di Sekolah ini :</strong>
+            <t t-esc="props.record.data.total_kelas_sekolah"/>
+        </div>
+
+    </div>
+</t>
+</templates>

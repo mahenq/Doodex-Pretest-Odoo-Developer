@@ -1,0 +1,57 @@
+<odoo>
+    <record id="view_sekolah_tree" model="ir.ui.view">
+        <field name="name">dev.sekolah.tree</field>
+        <field name="model">dev.sekolah</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="alamat"/>
+                <field name="total_kelas"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_sekolah_form" model="ir.ui.view">
+        <field name="name">dev.sekolah.form</field>
+        <field name="model">dev.sekolah</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="alamat"/>
+                        <field name="total_kelas" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Kelas">
+                            <field name="kelas_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="wali_kelas_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- ACTION SEKOLAH -->
+    <record id="action_sekolah" model="ir.actions.act_window">
+        <field name="name">Sekolah</field>
+        <field name="res_model">dev.sekolah</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ACTION KELAS -->
+    <record id="action_kelas" model="ir.actions.act_window">
+        <field name="name">Kelas</field>
+        <field name="res_model">dev.sekolah.kelas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>
