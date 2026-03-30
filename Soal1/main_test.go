@@ -7,7 +7,6 @@ import (
 	"time"
 )
 
-// helper parse date
 func parseDate(dateStr, layout string) time.Time {
 	t, _ := time.Parse(layout, dateStr)
 	return t
