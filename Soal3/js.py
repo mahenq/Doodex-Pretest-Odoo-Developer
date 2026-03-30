@@ -32,13 +32,13 @@ def print_projects(projects: Iterable[Project]) -> None:
 if __name__ == "__main__":
     projects: list[Project] = [
         {
-            "name": "Alpha",
+            "name": "Project Alpha",
             "budget": 10000,
             "sub_projects": [
                 {
                     "name": "Alpha-1",
                     "budget": 5000,
-                    "sub_projects": [],
+                    "sub_projects": []
                 },
                 {
                     "name": "Alpha-2",
@@ -47,11 +47,16 @@ if __name__ == "__main__":
                         {
                             "name": "Alpha-2-A",
                             "budget": 1000,
-                            "sub_projects": [],
+                            "sub_projects": []
                         }
-                    ],
-                },
-            ],
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Project Beta",
+            "budget": 8000,
+            "sub_projects": []
         }
     ]
 

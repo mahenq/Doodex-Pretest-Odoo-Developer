@@ -80,7 +80,7 @@ func CalculateLoyalty(transactions []Transaction) LoyaltyResult {
 }
 
 func pointsForTransaction(tx Transaction) int {
-	isHighValue := tx.Amount > minHighValueAmount
+	isHighValue := tx.Amount >= minHighValueAmount
 	isWeekend := isWeekendDay(tx.Date)
 
 	switch {

@@ -2,19 +2,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Final
 
-
-
 # Konstanta
-
 RATE_PER_KM: Final[int] = 5_000
 HANDLING_FEE: Final[int] = 20_000
 PRIORITY_FEE: Final[int] = 50_000
 INSURANCE_RATE: Final[float] = 0.10
 
-
-
 # Kelas Dasar
-
 @dataclass
 class Shipment:
     distance_km: int
@@ -26,10 +20,7 @@ class Shipment:
     def calculateBaseCost(self) -> int:
         return self.distance_km * RATE_PER_KM
 
-
-
 # Pengiriman Standar
-
 @dataclass
 class StandardShipment(Shipment):
     handling_fee: int = field(default=HANDLING_FEE, init=False)
@@ -40,7 +31,6 @@ class StandardShipment(Shipment):
 
 
 # Pengiriman Barang Fragil
-
 @dataclass
 class FragileGoodsShipment(StandardShipment):
 
@@ -49,27 +39,18 @@ class FragileGoodsShipment(StandardShipment):
         insurance = round(base_total * INSURANCE_RATE)
         return base_total + insurance
 
-
-
 # Pengiriman Prioritas
-
 @dataclass
 class PriorityShipment(StandardShipment):
 
     def calculateTotalCost(self) -> int:
         return super().calculateTotalCost() + PRIORITY_FEE
 
-
-
 # Helper — format Rupiah
-
 def format_rupiah(amount: int) -> str:
     return f"Rp {amount:,.0f}".replace(",", ".")
 
-
-
 # Helper — cetak rincian per kiriman
-
 def print_detail(index: int, shipment: StandardShipment) -> None:
     nama_kelas  = shipment.__class__.__name__
     base        = shipment.calculateBaseCost()
@@ -92,7 +73,6 @@ def print_detail(index: int, shipment: StandardShipment) -> None:
     print(f"    Total              : {format_rupiah(shipment.calculateTotalCost())}")
 
 # Eksekusi Utama
-
 #  Buat instance
 fragile  = FragileGoodsShipment(distance_km=100)
 priority = PriorityShipment(distance_km=50)
